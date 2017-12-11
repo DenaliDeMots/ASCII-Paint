@@ -1,10 +1,13 @@
 import updateCharacters from './updateCharacters'
 import {Map, List} from 'immutable';
 
-export function reducer (previousState, action) {
+export default function reducer (previousState = INITIAL_STATE, action) {
     switch (action.type) {
         case 'DRAW_MOVEMENT':
-            return updateCharacters(previousState, action)
+            return updateCharacters(previousState, action);
+        
+        default:
+            return previousState;
     }
 }
 

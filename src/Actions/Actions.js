@@ -1,6 +1,6 @@
 
 //TODO deep freeze the actions object
-export const actions = {
+export default const actions = {
     drawMovement
 }
 
