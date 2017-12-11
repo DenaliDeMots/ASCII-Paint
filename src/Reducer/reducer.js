@@ -1,5 +1,7 @@
-import updateCharacters from './updateCharacters'
-import {Map, List} from 'immutable';
+//import {Map, List} from 'immutable';
+
+import INITIAL_STATE from './initialState';
+import updateCharacters from './updateCharacters';
 
 export default function reducer (previousState = INITIAL_STATE, action) {
     switch (action.type) {
@@ -10,11 +12,3 @@ export default function reducer (previousState = INITIAL_STATE, action) {
             return previousState;
     }
 }
-
-const INITIAL_STATE = Map({
-    mouseDirection: 0,
-    mousePosition: Map({
-        x: 0,
-        y: 0
-    })
-})
