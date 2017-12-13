@@ -8,8 +8,8 @@ const INITIAL_STATE = Map({
         x: 0,
         y: 0
     }),
-    gridHeight,
-    gridWidth,
+    //gridHeight,
+    //gridWidth,
     characterGrid: makeGrid(gridWidth, gridHeight),
     palletSettings: initialPalletSettings; 
 })

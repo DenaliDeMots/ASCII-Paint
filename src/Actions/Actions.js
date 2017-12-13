@@ -1,12 +1,15 @@
 
 //TODO deep freeze the actions object
-export default const actions = {
+const actions = {
     drawMovement
 }
 
-const function drawMovement (newMousePosition) {
+function drawMovement (newMousePosition, character) {
     return {
         type: 'DRAW_MOVEMENT',
-        newMousePosition
+        newMousePosition,
+        character
     }
 }
+
+export default actions;
