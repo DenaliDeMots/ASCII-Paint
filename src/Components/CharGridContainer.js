@@ -16,14 +16,32 @@ import actions from '../Actions/actions';
             if (isDrawing(e.buttons)){
                 e.preventDefault();
                 const newMousePostion = {
-                    x = e.screenX,
-                    y = e.screenY
+                    x: e.screenX,
+                    y: e.screenY
                 };
                 dispatch(actions.drawMovement(newMousePostion, character))
             }
+         },
+         mouseEnterEvent: (e) => {
+             if(isMouseDown(e)){
+                 const mousePosition = {
+                    x: e.screenX,
+                    y: e.screenY
+                 }
+                 dispatch(actions.startDrawing(mousePosition))
+             }
+         },
+         mouseExitEvent: (e) => {
+             dispatch(actions.stopDrawing)
          }
      }
  }
+
+ function isMouseDown(event) {
+//TODO
+ //Determine whether the mouse button is held down when entering
+ //or exiting the grid
+ } 
 
  const CharContainerGrid = connect(
     mapStateToProps,
