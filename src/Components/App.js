@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CharGridContainer from 'Components/CharGridContainer';
-import Pallet from 'Components/Pallet';
+import CharGridContainer from './CharGridContainer';
+import Pallet from './Pallet';
 
 const App = () => (
     <div>

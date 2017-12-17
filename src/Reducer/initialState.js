@@ -1,6 +1,53 @@
 import {Map, List} from 'immutable';
 
-export let initialState;
+export const characterStyle = {
+    
+}
+
+export const initialCharacter = Map({
+    character: '+',
+    key: '',
+    style: characterStyle
+})
+
+const debug2 = initialCharacter.toJS();
+
+const gridHeight = 50;
+const gridWidth = 50;
+const gridTemplateColumns = 'repeat(' + String(gridWidth) + ', 1fr)';
+const gridTemplateRows = 'repeat(' + String(gridHeight) + ', 1fr)';
+
+const gridStyle = {
+    display: 'grid',
+    gridTemplateColumns,
+    gridTemplateRows,
+    justifyItems: 'stretch',
+    gridAutoFlow: 'row'
+}
+
+export function makeGrid(width, height) {
+    const grid = [];
+    for (let i = 0; i < height; i++) {
+        let row = makeRow(width);
+        row = row.map((char) => {
+            return char.set("key", char.get('key') + String(i) + 'Y');
+        })
+        grid.push(List(row));
+    }
+    return List(grid)
+}
+
+function makeRow (width) {
+    let row = [];
+    let character;
+    for (let i = 0; i < width; i++) {
+        character = initialCharacter.set('key', String(i) + 'X');
+        row.push(character);
+    }
+    return row;
+}
+
+const initialPalletSettings = Map();
 
 const INITIAL_STATE = Map({
     isDrawing: false,
@@ -16,51 +63,6 @@ const INITIAL_STATE = Map({
     palletSettings: initialPalletSettings 
 })
 
-initialCharacter = Map({
-    character: '+',
-    key: '',
-    style: characterStyle
-})
-
-const characterStyle = {
-    
-}
-
-const gridHeight = 250;
-const gridWidth = 250;
-const gridTemplateColumns = 'repeat(' + toString(gridWidth) + ', 1fr)';
-const gridTemplateRows = 'repeat(' + toString(gridHeight) + ', 1fr)';
-
-const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns,
-    gridTemplateRows,
-    justifyItems: 'stretch',
-    gridAutoFlow: 'row'
-}
-
-function makeGrid(width, height) {
-    const grid = [];
-    for (let i = 0; i < height; i++) {
-        let row = makeRow(width);
-        row = row.map((char) => {
-            return char.set("key", char.get('key') + toString(i) + 'Y');
-        })
-        grid.push(List(row));
-    }
-    return List(grid)
-}
-
-function makeRow (width) {
-    let row = [];
-    let character;
-    for (let i = 0; i < width; i++) {
-        character = initialCharacter.set('key', toString(i) + 'X');
-        row.push(character);
-    }
-    return row;
-}
-
-initialPalletSettings = Map();
+const debug = INITIAL_STATE.toJS();
 
 export default INITIAL_STATE;

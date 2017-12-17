@@ -6,7 +6,7 @@ import {
     DRAW_MOVEMENT,
     START_DRAWING,
     STOP_DRAWING
-} from './Actions/actions';
+} from '../Actions/actions';
 
 
 export default function reducer (previousState = INITIAL_STATE, action) {
@@ -15,7 +15,9 @@ export default function reducer (previousState = INITIAL_STATE, action) {
             return updateCharacters(previousState, action.newMousePosition, action.character);
         
         case START_DRAWING:
-            return previousState.set('isDrawing', true);
+            return previousState.withMutations(map => {
+                map.set('isDrawing', true).set('mousePosition', action.mousePosition)
+            });
         
         case STOP_DRAWING:
             return previousState.set('isDrawing', false);

@@ -1,16 +1,17 @@
 import {connect} from 'react-redux';
 
 import CharGrid from './CharGrid';
-import actions from '../Actions/actions';
+import {actions} from '../Actions/actions';
 
- const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
+    // const debug = state.characterGrid.toJS()
     return {
-        grid: state.characterGrid,
-        style: {},
+        grid: state.get('characterGrid'),
+        style: state.get('gridStyle'),
     }
  }
 
- const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
      return {
          mouseMoveEvent: (character) => (e) => {
             if (isDrawing(e.buttons)){
@@ -43,7 +44,7 @@ import actions from '../Actions/actions';
  //or exiting the grid
  } 
 
- const CharContainerGrid = connect(
+const CharContainerGrid = connect(
     mapStateToProps,
     mapDispatchToProps
   )(CharGrid)
