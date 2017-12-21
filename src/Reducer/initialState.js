@@ -51,7 +51,7 @@ const initialPalletSettings = Map();
 
 const INITIAL_STATE = Map({
     isDrawing: false,
-    mouseDirection: 0,
+    //mouseDirection: 0,
     mousePosition: Map({
         x: 0,
         y: 0
