@@ -6,7 +6,8 @@ export const fontSize = 18
 export const characterStyle = {
     fontFamily: 'Courier New',
     fontSize: fontSize + 'px',
-    lineHeight: '100%'
+    lineHeight: '100%',
+    color: 'LightGrey'
 }
 
 const {gridHeight, gridWidth, charWidth} = calcGridSize()
@@ -27,7 +28,8 @@ const gridStyle = {
     gridTemplateRows,
     justifyItems: 'stretch',
     gridAutoFlow: 'row',
-    border: '3px solid red'
+    border: '3px solid red',
+    backgroundColor: 'white'
 }
 
 export function makeGrid(width, height) {

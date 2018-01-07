@@ -5,7 +5,13 @@ function updateCharacters (state, newMousePosition, character) {
     //direction of the mouse movement and the pallet properties
     const direction = getMouseDirection(state.get('mousePosition'), newMousePosition);
     const asciiChar = getAsciiCharacter(direction);
-    const updatedChar = character.set('character', asciiChar)
+    const updatedChar = character.withMutations(
+        (char) => {
+            const oldStyle = char.get('style')
+            const newStyle = {...oldStyle, color: 'black'}
+            char.set('character', asciiChar).set('style', newStyle)
+        }
+    )
     //TODO update char based on current pallet settings
     const newGrid = findAndUpdateCharacter(character, updatedChar, state.get('characterGrid'));
     const newState = state.withMutations((map) => {
