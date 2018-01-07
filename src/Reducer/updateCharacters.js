@@ -28,13 +28,14 @@ export function getMouseDirection (previousPosition, currentPosition) {
     const deltaY = currentPosition.get('y') - previousPosition.get('y');
     //angle starting from the x axis going clockwise
     //i.e 45 degrees points to the lower right and 90 points straight down
-    const direction = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+    const rawDirection = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+    const direction = (rawDirection >= 0) ? rawDirection : (360 + rawDirection);
     return direction;
 }
 
 export function getAsciiCharacter(direction) {
     //select the ascii characterbased on movement direction
-
+    //console.log('mouse direction', direction)
     if (isHorizontal(direction)){
         return '-'
     } else if (isVertical(direction)){
