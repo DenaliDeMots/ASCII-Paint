@@ -1,19 +1,23 @@
 import {Map, List} from 'immutable';
+import calcGridSize from '../Initialization/calcGridSize';
+
+export const fontSize = 18
 
 export const characterStyle = {
-    
+    fontFamily: 'Courier New',
+    fontSize: fontSize + 'px',
+    lineHeight: '100%'
 }
 
+const {gridHeight, gridWidth, charWidth} = calcGridSize()
+
 export const initialCharacter = Map({
-    character: '+',
+    character: '.',
     key: '',
-    style: characterStyle
+    style: characterStyle,
 })
 
-const debug2 = initialCharacter.toJS();
-
-const gridHeight = 50;
-const gridWidth = 50;
+console.log('gridHeight: ' + gridHeight + ' gridWidth: ' + gridWidth)
 const gridTemplateColumns = 'repeat(' + String(gridWidth) + ', 1fr)';
 const gridTemplateRows = 'repeat(' + String(gridHeight) + ', 1fr)';
 
@@ -22,7 +26,8 @@ const gridStyle = {
     gridTemplateColumns,
     gridTemplateRows,
     justifyItems: 'stretch',
-    gridAutoFlow: 'row'
+    gridAutoFlow: 'row',
+    border: '3px solid red'
 }
 
 export function makeGrid(width, height) {
@@ -63,6 +68,6 @@ const INITIAL_STATE = Map({
     palletSettings: initialPalletSettings 
 })
 
-const debug = INITIAL_STATE.toJS();
+//const debug = INITIAL_STATE.toJS();
 
 export default INITIAL_STATE;
