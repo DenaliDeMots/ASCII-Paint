@@ -29,7 +29,8 @@ const gridStyle = {
     justifyItems: 'stretch',
     gridAutoFlow: 'row',
     border: '3px solid red',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    cursor: 'crosshair'
 }
 
 export function makeGrid(width, height) {
